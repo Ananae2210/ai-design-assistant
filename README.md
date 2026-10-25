@@ -5,7 +5,8 @@ An AI design critique and accessibility assistant. Upload a screen, get WCAG iss
 ## Status
 
 - [x] WCAG 2.2 colour contrast checker with "closest passing colour" fix (free, runs in the browser)
-- [ ] Screenshot upload + automated checks (contrast sampling, text size, tap targets)
+- [x] Screenshot upload: palette extraction, contrast of every colour against the main backgrounds, click-to-sample any two spots (all in the browser, nothing uploaded)
+- [ ] Text size and tap-target checks
 - [ ] AI critique of hierarchy, layout and copy (Claude, small model by default)
 - [ ] Figma link import (Figma REST API)
 - [ ] Saved reports and login (Supabase)
@@ -37,6 +38,7 @@ src/
   app/                    Next.js App Router pages
   components/             UI components
   lib/contrast/           WCAG maths: luminance, ratios, large-text rules, colour fixes (+ tests)
+  lib/palette/            Dominant-colour extraction and background/foreground pair rating (+ tests)
 ```
 
 ## Tech stack
