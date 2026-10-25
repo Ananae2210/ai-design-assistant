@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Design Copilot
 
-## Getting Started
+An AI design critique and accessibility assistant. Upload a screen, get WCAG issues, hierarchy feedback and concrete fixes.
 
-First, run the development server:
+## Status
+
+- [x] WCAG 2.2 colour contrast checker with "closest passing colour" fix (free, runs in the browser)
+- [ ] Screenshot upload + automated checks (contrast sampling, text size, tap targets)
+- [ ] AI critique of hierarchy, layout and copy (Claude, small model by default)
+- [ ] Figma link import (Figma REST API)
+- [ ] Saved reports and login (Supabase)
+
+## Cost approach
+
+Rule-based checks run in our own code at no cost. Only judgment calls (hierarchy, layout, copy) go to the AI, using a small model, resized images, cached results and a per-user daily cap. Hosting, database and monitoring use free tiers.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command             | What it does                 |
+| ------------------- | ---------------------------- |
+| `npm test`          | Unit tests (Vitest)          |
+| `npm run lint`      | ESLint                       |
+| `npm run typecheck` | TypeScript, no emit          |
+| `npm run build`     | Production build             |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+CI runs all four on every push and pull request (`.github/workflows/ci.yml`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project layout
 
-## Learn More
+```
+src/
+  app/                    Next.js App Router pages
+  components/             UI components
+  lib/contrast/           WCAG maths: luminance, ratios, large-text rules, colour fixes (+ tests)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Tech stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16, React 19, TypeScript, Tailwind CSS 4, Vitest, GitHub Actions.
