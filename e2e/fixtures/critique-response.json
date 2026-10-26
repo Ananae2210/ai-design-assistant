@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "cached": false,
+  "model": "claude-haiku-5-5",
+  "usage": { "inputTokens": 1850, "outputTokens": 640 },
+  "critique": {
+    "summary": "Test fixture: a clean checkout layout with weak contrast on secondary text and the main button.",
+    "strengths": ["Clear order summary", "Consistent card style"],
+    "issues": [
+      {
+        "title": "Button label is hard to read",
+        "category": "accessibility",
+        "severity": "critical",
+        "wcag": "1.4.3",
+        "location": "Place order button",
+        "problem": "White text on light orange is below 4.5:1.",
+        "fix": "Darken the button to #b35c00 or use dark text."
+      },
+      {
+        "title": "Item descriptions are faint",
+        "category": "accessibility",
+        "severity": "major",
+        "wcag": "1.4.3",
+        "location": "Under each item name",
+        "problem": "Light grey text on white is hard to read.",
+        "fix": "Use #6b645b for secondary text."
+      },
+      {
+        "title": "Edit link looks disabled",
+        "category": "interaction",
+        "severity": "minor",
+        "wcag": null,
+        "location": "Top right",
+        "problem": "The grey Edit link reads as inactive.",
+        "fix": "Use the accent colour and a larger tap target."
+      }
+    ]
+  }
+}

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Design Copilot",
-  description: "AI design critique and accessibility checks",
+  title: "AI Design Assistant",
+  description: "Review any UI screenshot for WCAG accessibility and design quality, with AI critique and concrete fixes.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

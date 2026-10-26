@@ -121,6 +121,7 @@ export default function ContrastChecker() {
         </div>
 
         <div
+          data-contrast-sample
           className="rounded-xl border border-line p-6"
           style={{ background: bgRgb ? toHex(bgRgb) : undefined, color: fgRgb ? toHex(fgRgb) : undefined }}
         >
