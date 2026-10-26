@@ -18,7 +18,7 @@ export function verdictFor(ratio: number): PairVerdict {
  * with each other would mostly pair icons with anti-aliasing, which is noise.
  * The largest colour always counts as a background.
  */
-export function ratePairs(swatches: Swatch[], backgroundShare = 0.05): Pair[] {
+export function ratePairs(swatches: Swatch[], backgroundShare = 0.1): Pair[] {
   const backgrounds = swatches.filter((s, i) => i === 0 || s.share >= backgroundShare);
   const foregrounds = swatches.filter((s) => !backgrounds.includes(s));
   const pairs: Pair[] = [];

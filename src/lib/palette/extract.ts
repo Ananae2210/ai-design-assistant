@@ -21,7 +21,7 @@ const distance = (a: RGB, b: RGB) => Math.hypot(a.r - b.r, a.g - b.g, a.b - b.b)
  * so anti-aliasing and compression noise don't show up as separate colours.
  */
 export function extractPalette(data: Uint8ClampedArray, options: Options = {}): Swatch[] {
-  const { max = 8, mergeDistance = 28, minShare = 0.005, stride = 1 } = options;
+  const { max = 8, mergeDistance = 18, minShare = 0.005, stride = 1 } = options;
   const buckets = new Map<number, { r: number; g: number; b: number; count: number }>();
   let total = 0;
 
