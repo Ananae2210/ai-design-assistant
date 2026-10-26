@@ -7,8 +7,13 @@ on:
 
 jobs:
   check:
-    # Pinned: ubuntu-latest moved to Ubuntu 26, which this Playwright version cannot install browser deps for.
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+    # Playwright's own image ships the browsers and their system libraries, so
+    # CI doesn't spend minutes installing them on every run.
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --user 1001
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -20,12 +25,11 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
-      - run: npx playwright install --with-deps chromium
       - name: Browser and accessibility tests
         run: npm run e2e
       - uses: actions/upload-artifact@v5
         if: failure()
         with:
-          name: playwright-report
+          name: playwright-results
           path: test-results/
           retention-days: 7
